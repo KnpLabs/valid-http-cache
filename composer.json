@@ -5,12 +5,16 @@
         "symfony/http-foundation": "~2"
     },
     "require-dev": {
-        "behat/behat": "~3@dev",
         "symfony/framework-bundle": "~2",
-        "phpspec/phpspec": "~2@dev"
+        "symfony/http-kernel": "~2",
+        "behat/behat": "~3@dev",
+        "phpspec/phpspec": "~2@dev",
+        "doctrine/common": "~2.4"
     },
     "suggest": {
-        "symfony/framework-bundle": "~2"
+        "symfony/framework-bundle": "~2",
+        "symfony/http-kernel": "~2.1",
+        "doctrine/common": "~2.4"
     },
     "autoload": {
         "psr-0": { "": "src" }
