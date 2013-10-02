@@ -1,0 +1,19 @@
+{
+    "name": "knplabs/php-valid",
+    "description": "A HTTP cache validation toolkit",
+    "require": {
+        "symfony/http-foundation": "~2"
+    },
+    "require-dev": {
+        "behat/behat": "~3@dev",
+        "symfony/framework-bundle": "~2",
+        "phpspec/phpspec": "~2@dev"
+    },
+    "suggest": {
+        "symfony/framework-bundle": "~2"
+    },
+    "autoload": {
+        "psr-0": { "": "src" }
+    },
+    "license": "MIT"
+}
