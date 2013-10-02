@@ -4,8 +4,7 @@ namespace Valid\Rule;
 
 use Symfony\Component\HttpFoundation\Request;
 
-interface LastModified
+interface LastModified extends Rule
 {
-    function supports(Request $request);
     function getLastModified(Request $request);
 }

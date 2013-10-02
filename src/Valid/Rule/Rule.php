@@ -4,7 +4,7 @@ namespace Valid\Rule;
 
 use Symfony\Component\HttpFoundation\Request;
 
-interface ETag extends Rule
+interface Rule
 {
-    function getEtag(Request $request);
+    function supports(Request $request);
 }
