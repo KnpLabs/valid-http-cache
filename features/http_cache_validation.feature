@@ -9,6 +9,7 @@ Feature: It helps in/validation of cacheable HTTP responses
         <?php
 
         use Valid\Rule;
+        use Symfony\Component\HttpFoundation\Request;
 
         class BlogPost implements Rule\ETag, Rule\LastModified
         {

@@ -20,7 +20,7 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
      */
     public function __construct(array $parameters)
     {
-        $this->dir = __DIR__;
+        $this->dir = __DIR__.'/tmp';
         $this->fs = new Filesystem;
     }
 
@@ -43,7 +43,7 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
 
         file_put_contents($file, $string);
 
-        require $file;
+        require_once $file;
     }
 
     /**
