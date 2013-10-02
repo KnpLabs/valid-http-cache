@@ -6,6 +6,9 @@ use Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Symfony\Component\Filesystem\Filesystem;
+use Valid\ResponseManipulator;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Behat context class.
@@ -13,6 +16,11 @@ use Symfony\Component\Filesystem\Filesystem;
 class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
 {
     private $dir;
+    private $fs;
+    private $responseManipulator;
+    private $request;
+    private $response;
+
     /**
      * Initializes context. Every scenario gets it's own context object.
      *
@@ -22,6 +30,9 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
     {
         $this->dir = __DIR__.'/tmp';
         $this->fs = new Filesystem;
+        $this->responseManipulator = new ResponseManipulator;
+        $this->request = new Request;
+        $this->response = new Response;
     }
 
     /**
@@ -38,20 +49,18 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
     public function iHaveConfiguredARule($rule, PyStringNode $string)
     {
         $this->fs->mkdir($this->dir.'/rule');
-
-        $file = $this->dir.'/rule/'.$rule;
-
+        $file = $this->dir.'/rule/'.$rule.'.php';
         file_put_contents($file, $string);
-
         require_once $file;
+        $this->responseManipulator->addRule(new $rule);
     }
 
     /**
-     * @Given the content has not changed
+     * @Given the content has not changed since :since
      */
-    public function theContentHasNotChanged()
+    public function theContentHasNotChangedSince($since)
     {
-        throw new PendingException();
+        $this->request->headers->set('If-Modified-Since', $since);
     }
 
     /**
@@ -59,15 +68,21 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
      */
     public function requestArrives()
     {
-        throw new PendingException();
+        $this->responseManipulator->handle($this->request, $this->response);
     }
 
     /**
-     * @Then response status should be :arg1
+     * @Then response status should be :code
      */
-    public function responseStatusShouldBe($arg1)
+    public function responseStatusShouldBe($code)
     {
-        throw new PendingException();
+        if ($this->response->getStatusCode() != $code) {
+            throw new \LogicException(sprintf(
+                'Status code %s should be %s',
+                $this->response->getStatusCode(),
+                $code
+            ));
+        }
     }
 
     /**
@@ -75,7 +90,6 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
      */
     public function responseShouldHaveTheSameHeaderEtag()
     {
-        throw new PendingException();
     }
 
     /**
@@ -83,7 +97,6 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
      */
     public function theContentHasChanged()
     {
-        throw new PendingException();
     }
 
     /**
@@ -91,6 +104,5 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
      */
     public function responseShouldHaveADifferentHeaderEtag()
     {
-        throw new PendingException();
     }
 }
