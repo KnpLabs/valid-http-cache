@@ -16,6 +16,11 @@ class ResponseManipulator
         $this->rules = $rules;
     }
 
+    public function addRule(Rule\Rule $rule)
+    {
+        $this->rules[] = $rule;
+    }
+
     public function handle(Request $request, Response $response)
     {
         // TODO so much if!
