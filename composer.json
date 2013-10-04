@@ -1,6 +1,10 @@
 {
     "name": "knplabs/php-valid",
     "description": "A HTTP cache validation toolkit",
+    "authors": [
+        { "name": "Florian Klein", "email": "florian.klein@free.fr" },
+        { "name": "KnpLabs", "homepage": "http://knplabs.com" }
+    ],
     "require": {
         "symfony/http-foundation": "~2"
     },
@@ -12,9 +16,10 @@
         "doctrine/orm": "~2.4"
     },
     "suggest": {
-        "symfony/framework-bundle": "~2",
-        "symfony/http-kernel": "~2.1",
-        "doctrine/common": "~2.4"
+        "symfony/framework-bundle": "to have all in one",
+        "symfony/http-kernel": "to use kernel events",
+        "doctrine/common": "to use Doctrine listener rule",
+        "stack/builder": "to use stack kernel middleware"
     },
     "autoload": {
         "psr-0": { "": "src" }
