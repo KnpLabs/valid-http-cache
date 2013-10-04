@@ -3,7 +3,7 @@
 ## What
 
 A php 5.3+ library to help manage HTTP/1.1 cache validation headers, 
-using the symfony/HttpFounation layer.
+using the symfony/HttpFoundation layer.
 
 ## Why
 
