@@ -47,8 +47,10 @@ class CustomRule implements \Valid\Rule\LastModified, \Valid\Rule\ETag
     }
 }
 
-$kernel = new \Valid\Kernel(
-    new AppCache(new AppKernel('prod', false)),
+$kernel = new AppCache(
+    new \Valid\Kernel(
+        new AppKernel('prod', false)
+    ),
     new \Valid\ResponseManipulator(array(
         new \Valid\Doctrine\ListenerRule,
         new CustomRule,
