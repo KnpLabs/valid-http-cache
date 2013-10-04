@@ -24,6 +24,7 @@ class ResponseManipulator
     public function handle(Request $request, Response $response)
     {
         // TODO so much if!
+        $isNotModified = false;
         foreach ($this->rules as $rule) {
             if ($rule->supports($request)) {
                 if ($rule instanceof Rule\ETag) {
@@ -40,5 +41,7 @@ class ResponseManipulator
                 $isNotModified = $response->isNotModified($request);
             }
         }
+
+        return $isNotModified;
     }
 }

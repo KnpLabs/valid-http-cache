@@ -5,6 +5,7 @@ namespace Valid\Stack;
 use Valid\ResponseManipulator;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class Kernel implements HttpKernelInterface
 {
@@ -19,8 +20,11 @@ class Kernel implements HttpKernelInterface
 
     public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
     {
+        $response = new Response;
+        if ($this->responseManipulator->handle($request, $response)) {
+            return $response;
+        }
         $response = $this->app->handle($request, $type, $catch);
-        $this->responseManipulator->handle($request, $response);
 
         return $response;
     }
