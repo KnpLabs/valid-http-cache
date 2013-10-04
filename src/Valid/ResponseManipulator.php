@@ -27,14 +27,18 @@ class ResponseManipulator
         foreach ($this->rules as $rule) {
             if ($rule->supports($request)) {
                 if ($rule instanceof Rule\ETag) {
-                    $response->setEtag($rule->getETag($request));
+                    if ($etag = $rule->getETag($request)) {
+                        $response->setEtag($etag);
+                    }
                 }
                 if ($rule instanceof Rule\LastModified) {
-                    $response->setLastModified($rule->getLastModified($request));
+                    if ($lastModified = $rule->getLastModified($request)) {
+                        $response->setLastModified($lastModified);
+                    }
                 }
+
+                $isNotModified = $response->isNotModified($request);
             }
         }
-
-        $response->isNotModified($request);
     }
 }

@@ -9,7 +9,7 @@
         "symfony/http-kernel": "~2",
         "behat/behat": "~3@dev",
         "phpspec/phpspec": "~2@dev",
-        "doctrine/common": "~2.4"
+        "doctrine/orm": "~2.4"
     },
     "suggest": {
         "symfony/framework-bundle": "~2",

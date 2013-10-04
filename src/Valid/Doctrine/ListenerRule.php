@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ListenerRule implements EventSubscriber, Rule\ETag, Rule\LastModified
 {
-    private $objects = [];
+    private $objects = array();
 
     public function getSubscribedEvents()
     {
@@ -17,6 +17,7 @@ class ListenerRule implements EventSubscriber, Rule\ETag, Rule\LastModified
             'postPersist',
             'postUpdate',
             'postDelete',
+            'postFlush',
         );
     }
 
@@ -45,7 +46,7 @@ class ListenerRule implements EventSubscriber, Rule\ETag, Rule\LastModified
     public function supports(Request $request)
     {
         foreach ($this->objects as $object) {
-            if ($object->supprts($request)) {
+            if ($object->supports($request)) {
                 return true;
             }
         }
@@ -69,5 +70,10 @@ class ListenerRule implements EventSubscriber, Rule\ETag, Rule\LastModified
                 return $object->getETag($request);
             }
         }
+    }
+
+    public function postFlush(EventArgs $event)
+    {
+        $this->objects = array();
     }
 }
