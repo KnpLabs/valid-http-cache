@@ -29,9 +29,9 @@ class EventListener implements EventSubscriberInterface
     public function onKernelController(FilterControllerEvent $event)
     {
         $request = $event->getRequest();
-        $response = new Response;
         $controller = $event->getController();
-        $event->setController(function() use($request, $response, $controller) {
+        $event->setController(function() use($request, $controller) {
+            $response = new Response;
             if ($this->responseManipulator->handle($request, $response)) {
                 return $response;
             }
