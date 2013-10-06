@@ -16,10 +16,8 @@
         "doctrine/orm": "~2.4"
     },
     "suggest": {
-        "symfony/framework-bundle": "to have all in one",
-        "symfony/http-kernel": "to use kernel events",
-        "doctrine/common": "to use Doctrine listener rule",
-        "stack/builder": "to use stack kernel middleware"
+        "symfony/http-kernel": "to use kernel events and stackphp",
+        "doctrine/common": "to use Doctrine listener rule"
     },
     "autoload": {
         "psr-0": { "": "src" }
