@@ -1,8 +1,8 @@
 <?php
 
-namespace Valid\Stack;
+namespace Knp\Valid\Stack;
 
-use Valid\ResponseManipulator;
+use Knp\Valid\ResponseManipulator;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

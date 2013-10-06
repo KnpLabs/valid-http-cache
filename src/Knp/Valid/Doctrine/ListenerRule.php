@@ -1,8 +1,8 @@
 <?php
 
-namespace Valid\Doctrine;
+namespace Knp\Valid\Doctrine;
 
-use Valid\Rule;
+use Knp\Valid\Rule;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\EventArgs;
 use Symfony\Component\HttpFoundation\Request;

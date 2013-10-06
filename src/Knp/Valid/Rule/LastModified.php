@@ -1,6 +1,6 @@
 <?php
 
-namespace Valid\Rule;
+namespace Knp\Valid\Rule;
 
 use Symfony\Component\HttpFoundation\Request;
 

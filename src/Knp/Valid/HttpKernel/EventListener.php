@@ -1,6 +1,6 @@
 <?php
 
-namespace Valid\HttpKernel;
+namespace Knp\Valid\HttpKernel;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;

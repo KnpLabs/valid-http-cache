@@ -6,11 +6,11 @@ use Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Symfony\Component\Filesystem\Filesystem;
-use Valid\ResponseManipulator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Valid\Rule\Rule;
-use Valid\Doctrine\ListenerRule;
+use Knp\Valid\ResponseManipulator;
+use Knp\Valid\Rule\Rule;
+use Knp\Valid\Doctrine\ListenerRule;
 
 /**
  * Behat context class.

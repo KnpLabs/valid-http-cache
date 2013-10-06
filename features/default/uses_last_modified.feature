@@ -10,7 +10,7 @@ Feature: It uses Last-Modified header
 
         namespace Scenario3;
 
-        use Valid\Rule;
+        use Knp\Valid\Rule;
         use Symfony\Component\HttpFoundation\Request;
 
         class BlogPost implements Rule\LastModified
@@ -37,7 +37,7 @@ Feature: It uses Last-Modified header
 
         namespace Scenario4;
 
-        use Valid\Rule;
+        use Knp\Valid\Rule;
         use Symfony\Component\HttpFoundation\Request;
 
         class BlogPost implements Rule\LastModified

@@ -10,7 +10,7 @@ Feature: It uses ETag header
 
         namespace Scenario1;
 
-        use Valid\Rule;
+        use Knp\Valid\Rule;
         use Symfony\Component\HttpFoundation\Request;
 
         class BlogPost implements Rule\ETag
@@ -37,7 +37,7 @@ Feature: It uses ETag header
 
         namespace Scenario2;
 
-        use Valid\Rule;
+        use Knp\Valid\Rule;
         use Symfony\Component\HttpFoundation\Request;
 
         class BlogPost implements Rule\ETag

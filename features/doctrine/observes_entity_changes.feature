@@ -10,7 +10,7 @@ Feature: It observes entity changes
 
         namespace Scenario5;
 
-        use Valid\Rule;
+        use Knp\Valid\Rule;
         use Symfony\Component\HttpFoundation\Request;
 
         /**
@@ -62,7 +62,7 @@ Feature: It observes entity changes
 
         namespace Scenario6;
 
-        use Valid\Rule;
+        use Knp\Valid\Rule;
         use Symfony\Component\HttpFoundation\Request;
 
         /**

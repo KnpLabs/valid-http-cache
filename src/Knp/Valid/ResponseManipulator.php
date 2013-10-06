@@ -1,8 +1,8 @@
 <?php
 
-namespace Valid;
+namespace Knp\Valid;
 
-use Valid\Rule;
+use Knp\Valid\Rule;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
