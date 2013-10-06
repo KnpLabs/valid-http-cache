@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Kernel implements HttpKernelInterface
 {
-    private $app;
+    private $kernel;
     private $responseManipulator;
 
-    public function __construct(HttpKernelInterface $app, ResponseManipulator $responseManipulator)
+    public function __construct(HttpKernelInterface $kernel, ResponseManipulator $responseManipulator)
     {
-        $this->app = $app;
+        $this->kernel = $kernel;
         $this->responseManipulator = $responseManipulator;
     }
 
@@ -24,7 +24,8 @@ class Kernel implements HttpKernelInterface
         if ($this->responseManipulator->handle($request, $response)) {
             return $response;
         }
-        $response = $this->app->handle($request, $type, $catch);
+        $response = $this->kernel->handle($request, $type, $catch);
+        $this->responseManipulator->handle($request, $response);
 
         return $response;
     }
