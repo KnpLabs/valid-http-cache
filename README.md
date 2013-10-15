@@ -29,7 +29,7 @@ composer require "knplabs/valid=~0.1@dev"
 
 <?php
 
-class CustomRule implements \Valid\Rule\LastModified, \Valid\Rule\ETag
+class CustomRule implements Knp\Valid\Rule\LastModified, Knp\Valid\Rule\ETag
 {
     public function supports(Request $request)
     {
@@ -48,10 +48,10 @@ class CustomRule implements \Valid\Rule\LastModified, \Valid\Rule\ETag
 }
 
 $kernel = new AppCache(
-    new \Valid\Kernel(
+    new Knp\Valid\Kernel(
         new AppKernel('prod', false),
-        new \Valid\ResponseManipulator(array(
-            new \Valid\Doctrine\ListenerRule,
+        new Knp\Valid\ResponseManipulator(array(
+            new Knp\Valid\Doctrine\ListenerRule,
             new CustomRule,
         ))
     )
@@ -70,7 +70,7 @@ composer install --dev --prefer-dist
 
 vim features/**/*.feature
 behat
-phpspec desc Valid\*
+phpspec desc Knp\Valid\*
 phpspec run
 
 ```
