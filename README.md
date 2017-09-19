@@ -1,5 +1,7 @@
 # php-valid
 
+*This project is not maintained anymore*.
+
 ## What
 
 A php 5.3+ library to help manage HTTP/1.1 cache validation headers, 
